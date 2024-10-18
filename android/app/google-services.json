@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "730964372114",
+    "project_id": "ecommerceapp-c21b2",
+    "storage_bucket": "ecommerceapp-c21b2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:730964372114:android:df492272e6681d54ea144b",
+        "android_client_info": {
+          "package_name": "com.ramazangokmen.ecommerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXXDYX2VwNNMfz-i1gQ43y48jpLNg_vSk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
