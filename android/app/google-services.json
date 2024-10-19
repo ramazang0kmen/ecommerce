@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "730964372114",
-    "project_id": "ecommerceapp-c21b2",
-    "storage_bucket": "ecommerceapp-c21b2.appspot.com"
+    "project_number": "151881927593",
+    "project_id": "ecommerce-4211",
+    "storage_bucket": "ecommerce-4211.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:730964372114:android:df492272e6681d54ea144b",
+        "mobilesdk_app_id": "1:151881927593:android:e344b057899ca0f7ac92b8",
         "android_client_info": {
           "package_name": "com.ramazangokmen.ecommerce"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBXXDYX2VwNNMfz-i1gQ43y48jpLNg_vSk"
+          "current_key": "AIzaSyAiux2RZmC0pkr6QB_kCR3uhXXz5cpA1xg"
         }
       ],
       "services": {
