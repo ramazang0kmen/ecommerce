@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class AuthFirebaseService {
   Future<Either> signUp(UserCreationReq user);
+  Future<Either> getAges();
 }
 
 class AuthFirebaseServiceImpl implements AuthFirebaseService {
@@ -41,6 +42,18 @@ class AuthFirebaseServiceImpl implements AuthFirebaseService {
       }
 
       return Left(message);
+    }
+  }
+
+  @override
+  Future<Either> getAges() async {
+    try {
+      var returnData =
+          await FirebaseFirestore.instance.collection('Ages').get();
+
+      return Right(returnData.docs);
+    } catch (e) {
+      return const Left('Please try again later.');
     }
   }
 }

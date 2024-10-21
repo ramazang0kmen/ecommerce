@@ -62,16 +62,16 @@ class EnterPasswordPage extends StatelessWidget {
     return RichText(
       text: TextSpan(
         children: [
-          TextSpan(
+          const TextSpan(
             text: "Forgot password? ",
           ),
           TextSpan(
             text: 'Reset',
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                AppNavigator.push(context, ForgotPasswordPage());
+                AppNavigator.push(context, const ForgotPasswordPage());
               },
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
             ),
           ),

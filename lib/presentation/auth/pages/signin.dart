@@ -57,7 +57,7 @@ class SignInPage extends StatelessWidget {
   Widget _continueButton(BuildContext context) {
     return BasicAppButton(
       onPressed: () {
-        AppNavigator.push(context, EnterPasswordPage());
+        AppNavigator.push(context, const EnterPasswordPage());
       },
       title: 'Continue',
     );
@@ -74,7 +74,7 @@ class SignInPage extends StatelessWidget {
             text: 'Create one',
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                AppNavigator.push(context, const SignUpPage());
+                AppNavigator.push(context, SignUpPage());
               },
             style: const TextStyle(
               fontWeight: FontWeight.bold,
