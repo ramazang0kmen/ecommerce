@@ -20,4 +20,9 @@ class AuthRepositoryImpl extends AuthRepository {
   Future<Either> signIn(UserSigninReq user) async {
     return await sl<AuthFirebaseService>().signIn(user);
   }
+
+  @override
+  Future<Either> sendPasswordResetEmail(String email) async {
+    return await sl<AuthFirebaseService>().sendPasswordResetEmail(email);
+  }
 }
