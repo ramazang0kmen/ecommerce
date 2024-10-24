@@ -96,7 +96,8 @@ class AuthFirebaseServiceImpl implements AuthFirebaseService {
 
   @override
   Future<bool> isLoggedIn() async {
-    if (FirebaseAuth.instance.currentUser != null) {
+    var currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser != null) {
       return true;
     } else {
       return false;
@@ -112,6 +113,8 @@ class AuthFirebaseServiceImpl implements AuthFirebaseService {
           .doc(currentUser!.uid)
           .get()
           .then((value) => value.data());
+
+      userData!['userId'] = currentUser.uid;
       return Right(userData);
     } catch (e) {
       return const Left('Please try again later.');
