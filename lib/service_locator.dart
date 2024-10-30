@@ -14,6 +14,7 @@ import 'package:ecommerce/domain/auth/usecases/signup.dart';
 import 'package:ecommerce/domain/category/repository/category.dart';
 import 'package:ecommerce/domain/category/usecases/get_categories.dart';
 import 'package:ecommerce/domain/product/repository/product.dart';
+import 'package:ecommerce/domain/product/usecase/get_new_in.dart';
 import 'package:ecommerce/domain/product/usecase/get_top_selling.dart';
 import 'package:get_it/get_it.dart';
 
@@ -21,34 +22,65 @@ final sl = GetIt.instance;
 
 Future<void> initializeDependencies() async {
   //Services
-  sl.registerSingleton<AuthFirebaseService>(AuthFirebaseServiceImpl());
+  sl.registerSingleton<AuthFirebaseService>(
+    AuthFirebaseServiceImpl(),
+  );
 
-  sl.registerSingleton<CategoryFirebaseService>(CategoryFirebaseServiceImpl());
+  sl.registerSingleton<CategoryFirebaseService>(
+    CategoryFirebaseServiceImpl(),
+  );
 
-  sl.registerSingleton<ProductFirebaseService>(ProductFirebaseServiceImpl());
+  sl.registerSingleton<ProductFirebaseService>(
+    ProductFirebaseServiceImpl(),
+  );
 
   //Repositories
-  sl.registerSingleton<AuthRepository>(AuthRepositoryImpl());
+  sl.registerSingleton<AuthRepository>(
+    AuthRepositoryImpl(),
+  );
 
-  sl.registerSingleton<CategoryRepository>(CategoryRepositoryImpl());
+  sl.registerSingleton<CategoryRepository>(
+    CategoryRepositoryImpl(),
+  );
 
-  sl.registerSingleton<ProductRepository>(ProductRepositoryImpl());
+  sl.registerSingleton<ProductRepository>(
+    ProductRepositoryImpl(),
+  );
 
   //Use cases
-  sl.registerSingleton<SignupUseCase>(SignupUseCase());
+  sl.registerSingleton<SignupUseCase>(
+    SignupUseCase(),
+  );
 
-  sl.registerSingleton<GetAgesUseCase>(GetAgesUseCase());
+  sl.registerSingleton<GetAgesUseCase>(
+    GetAgesUseCase(),
+  );
 
-  sl.registerSingleton<SigninUseCase>(SigninUseCase());
+  sl.registerSingleton<SigninUseCase>(
+    SigninUseCase(),
+  );
 
   sl.registerSingleton<SendPasswordResetEmailUseCase>(
-      SendPasswordResetEmailUseCase());
+    SendPasswordResetEmailUseCase(),
+  );
 
-  sl.registerSingleton<IsLoggedInUseCase>(IsLoggedInUseCase());
+  sl.registerSingleton<IsLoggedInUseCase>(
+    IsLoggedInUseCase(),
+  );
 
-  sl.registerSingleton<GetUserUseCase>(GetUserUseCase());
+  sl.registerSingleton<GetUserUseCase>(
+    GetUserUseCase(),
+  );
 
-  sl.registerSingleton<GetCategoriesUseCase>(GetCategoriesUseCase());
+  sl.registerSingleton<GetCategoriesUseCase>(
+    GetCategoriesUseCase(),
+  );
 
-  sl.registerSingleton<GetTopSellingUseCase>(GetTopSellingUseCase());
+  sl.registerSingleton<GetTopSellingUseCase>(
+    GetTopSellingUseCase(),
+  );
+
+  sl.registerSingleton<GetNewInUseCase>(
+    GetNewInUseCase(),
+  );
 }

@@ -1,21 +1,21 @@
 import 'package:ecommerce/common/bloc/product/products_display_cubit.dart';
 import 'package:ecommerce/common/bloc/product/products_display_state.dart';
 import 'package:ecommerce/common/widgets/product/product_card.dart';
+import 'package:ecommerce/core/configs/theme/app_colors.dart';
 import 'package:ecommerce/domain/product/entities/product.dart';
-import 'package:ecommerce/domain/product/usecase/get_top_selling.dart';
+import 'package:ecommerce/domain/product/usecase/get_new_in.dart';
 import 'package:ecommerce/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class TopSelling extends StatelessWidget {
-  const TopSelling({super.key});
+class NewIn extends StatelessWidget {
+  const NewIn({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          ProductsDisplayCubit(useCase: sl<GetTopSellingUseCase>())
-            ..displayProducts(),
+      create: (context) => ProductsDisplayCubit(useCase: sl<GetNewInUseCase>())
+        ..displayProducts(),
       child: BlocBuilder<ProductsDisplayCubit, ProductsDisplayState>(
         builder: (context, state) {
           if (state is ProductsLoading) {
@@ -27,7 +27,7 @@ class TopSelling extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                _topSelling(),
+                _newIn(),
                 const SizedBox(
                   height: 20,
                 ),
@@ -41,17 +41,17 @@ class TopSelling extends StatelessWidget {
     );
   }
 
-  Widget _topSelling() {
+  Widget _newIn() {
     return const Padding(
       padding: EdgeInsets.symmetric(
         horizontal: 16,
       ),
       child: Text(
-        'Top Selling',
+        'New In',
         style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 16,
-        ),
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+            color: AppColors.primary),
       ),
     );
   }
