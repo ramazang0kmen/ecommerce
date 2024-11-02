@@ -83,7 +83,10 @@ class CartPage extends StatelessWidget {
         const Text(
           "Cart is empty",
           textAlign: TextAlign.center,
-          style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 20,
+          ),
         )
       ],
     );

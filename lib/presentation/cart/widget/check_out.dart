@@ -1,7 +1,9 @@
 import 'package:ecommerce/common/helper/cart/cart.dart';
+import 'package:ecommerce/common/helper/navigator/app_navigator.dart';
 import 'package:ecommerce/common/widgets/button/basic_app_button.dart';
 import 'package:ecommerce/core/configs/theme/app_colors.dart';
 import 'package:ecommerce/domain/order/entities/product_orderer.dart';
+import 'package:ecommerce/presentation/cart/pages/checkout.dart';
 import 'package:flutter/material.dart';
 
 class CheckOut extends StatelessWidget {
@@ -77,7 +79,7 @@ class CheckOut extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 'Total',
                 style: TextStyle(
                   color: Colors.grey,
@@ -86,7 +88,7 @@ class CheckOut extends StatelessWidget {
               ),
               Text(
                 '\$${CartHelper.calculateCartSubtotal(products) + 8}',
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
                 ),
@@ -94,7 +96,9 @@ class CheckOut extends StatelessWidget {
             ],
           ),
           BasicAppButton(
-            onPressed: () {},
+            onPressed: () {
+              AppNavigator.push(context, CheckOutPage(products: products));
+            },
             title: 'Checkout',
           ),
         ],
