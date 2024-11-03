@@ -1,11 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:ecommerce/data/product/models/product.dart';
+import 'package:ecommerce/domain/product/entities/product.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class ProductFirebaseService {
   Future<Either> getTopSelling();
   Future<Either> getNewIn();
   Future<Either> getProductByCategory(String categoryId);
   Future<Either> getProductByTitle(String title);
+  Future<Either> addOrRemoveFavoriteProduct(ProductEntity product);
+  Future<bool> isFavorite(String productId);
+  Future<Either> getFavoritesProducts();
 }
 
 class ProductFirebaseServiceImpl implements ProductFirebaseService {
@@ -69,6 +75,70 @@ class ProductFirebaseServiceImpl implements ProductFirebaseService {
             'title',
             isGreaterThanOrEqualTo: title,
           )
+          .get();
+      return Right(returnedData.docs.map((e) => e.data()).toList());
+    } catch (e) {
+      return const Left('Please try again later');
+    }
+  }
+
+  @override
+  Future<Either> addOrRemoveFavoriteProduct(ProductEntity product) async {
+    try {
+      var user = FirebaseAuth.instance.currentUser;
+      var products = await FirebaseFirestore.instance
+          .collection("Users")
+          .doc(user!.uid)
+          .collection('Favorites')
+          .where('productId', isEqualTo: product.productId)
+          .get();
+
+      if (products.docs.isNotEmpty) {
+        await products.docs.first.reference.delete();
+        return const Right(false);
+      } else {
+        await FirebaseFirestore.instance
+            .collection("Users")
+            .doc(user.uid)
+            .collection('Favorites')
+            .add(product.fromEntity().toMap());
+        return const Right(true);
+      }
+    } catch (e) {
+      return const Left('Please try again later');
+    }
+  }
+
+  @override
+  Future<bool> isFavorite(String productId) async {
+    try {
+      var user = FirebaseAuth.instance.currentUser;
+      var products = await FirebaseFirestore.instance
+          .collection("Users")
+          .doc(user!.uid)
+          .collection('Favorites')
+          .where('productId', isEqualTo: productId)
+          .get();
+
+      if (products.docs.isNotEmpty) {
+        await products.docs.first.reference.delete();
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      return false;
+    }
+  }
+
+  @override
+  Future<Either> getFavoritesProducts() async {
+    try {
+      var user = FirebaseAuth.instance.currentUser;
+      var returnedData = await FirebaseFirestore.instance
+          .collection("Users")
+          .doc(user!.uid)
+          .collection('Favorites')
           .get();
       return Right(returnedData.docs.map((e) => e.data()).toList());
     } catch (e) {

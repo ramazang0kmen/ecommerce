@@ -46,6 +46,22 @@ class ProductModel {
       title: map['title'] as String,
     );
   }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'categoryId': categoryId,
+      'colors': colors.map((e) => e.toMap()).toList(),
+      'createdDate': createdDate,
+      'discountPrice': discountPrice,
+      'gender': gender,
+      'images': images.map((e) => e.toString()).toList(),
+      'price': price,
+      'sizes': sizes.map((e) => e.toString()).toList(),
+      'productId': productId,
+      'salesNumber': salesNumber,
+      'title': title,
+    };
+  }
 }
 
 extension ProductXModel on ProductModel {
@@ -53,6 +69,24 @@ extension ProductXModel on ProductModel {
     return ProductEntity(
       categoryId: categoryId,
       colors: colors.map((e) => e.toEntity()).toList(),
+      createdDate: createdDate,
+      discountPrice: discountPrice,
+      gender: gender,
+      images: images,
+      price: price,
+      sizes: sizes,
+      productId: productId,
+      salesNumber: salesNumber,
+      title: title,
+    );
+  }
+}
+
+extension ProductXEntity on ProductEntity {
+  ProductModel fromEntity() {
+    return ProductModel(
+      categoryId: categoryId,
+      colors: colors.map((e) => e.fromEntity()).toList(),
       createdDate: createdDate,
       discountPrice: discountPrice,
       gender: gender,

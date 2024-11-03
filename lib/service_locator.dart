@@ -21,10 +21,13 @@ import 'package:ecommerce/domain/order/usecases/get_cart_products.dart';
 import 'package:ecommerce/domain/order/usecases/order_regitration.dart';
 import 'package:ecommerce/domain/order/usecases/remove_cart_product.dart';
 import 'package:ecommerce/domain/product/repository/product.dart';
+import 'package:ecommerce/domain/product/usecase/add_or_remove_favorite_product.dart';
+import 'package:ecommerce/domain/product/usecase/get_favorite_products.dart';
 import 'package:ecommerce/domain/product/usecase/get_new_in.dart';
 import 'package:ecommerce/domain/product/usecase/get_product_by_category_id.dart';
 import 'package:ecommerce/domain/product/usecase/get_products_by_title.dart';
 import 'package:ecommerce/domain/product/usecase/get_top_selling.dart';
+import 'package:ecommerce/domain/product/usecase/is_favorite.dart';
 import 'package:get_it/get_it.dart';
 
 final sl = GetIt.instance;
@@ -123,5 +126,17 @@ Future<void> initializeDependencies() async {
 
   sl.registerSingleton<OrderRegistrationUseCase>(
     OrderRegistrationUseCase(),
+  );
+
+  sl.registerSingleton<AddOrRemoveFavoriteProductUseCase>(
+    AddOrRemoveFavoriteProductUseCase(),
+  );
+
+  sl.registerSingleton<IsFavoriteUseCase>(
+    IsFavoriteUseCase(),
+  );
+
+  sl.registerSingleton<GetFavoriteProductsUseCase>(
+    GetFavoriteProductsUseCase(),
   );
 }
